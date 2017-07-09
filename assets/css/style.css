@@ -1,0 +1,36 @@
+.bg{
+	background-image: url("../images/pokestadium2.png");
+	background-repeat: no-repeat;
+	background-size: 1800px;
+}
+#p1Bank {
+  height: 200px;
+}
+
+#p2Bank {
+  height: 500px;
+}
+
+p {
+	font-size: 30px;
+	font-family: georgia;
+	color: white;
+	font-weight: bold;
+}
+
+#header {
+  align-content: center;
+}
+#legend1 {
+  color: yellow;
+  font-weight: bold;
+  font-family: georgia;
+}
+#legend2 {
+  color:yellow;
+  font-weight: bold;
+  font-family: georgia;
+}
+.clear {
+  z-index: -1;
+}
