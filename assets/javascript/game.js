@@ -6,26 +6,27 @@
     "assets/images/caterpie.gif",
     "assets/images/sandshrew2.gif"];
 
-
+    //setting the DOM 
     function pokePick(name,healthPoint,hitPoint,battlePoints){
         this.pokeName = name;
         this.pokeHealthPoint = healthPoint;
         this.pokeHitPoint = hitPoint;
         this.pokeBattlePoints = battlePoints;
     }
+    //assigning variables
     var pikachu = new pokePick(p1Bank[0],125, 5, [3,4,6,7,8]);
     var squirtle = new pokePick(p1Bank[1],160, 2, [1,1,2,3,4,4,5,6]);
     var charmander = new pokePick(p1Bank[2],150, 7, [0,1,2,3,4,8,10]);
     var bulbasaur = new pokePick(p1Bank[3], 200, 1, [4,5,6]);
     var caterpie = new pokePick(p1Bank[4],120, 4, [2,2,3,3,4,7,12]);
     var sandshrew = new pokePick(p1Bank[5],175, 3, [3,4,5,6,7,8,9]);
-    
+    //setting the players on bench
     var player1Char = 3;
     var player2Char = 3;
 
   var player1;
   var player2;
-
+  //setting the battlefield 
  $("#attack").on("click", function(){
     player1.pokeHitPoint += player1.pokeBattlePoints[Math.floor(Math.random() * player1.pokeBattlePoints.length)];
     player2.pokeHitPoint += player2.pokeBattlePoints[Math.floor(Math.random() * player2.pokeBattlePoints.length)];
@@ -33,13 +34,13 @@
     player2.pokeHealthPoint -= player1.pokeHitPoint;
 
 
-
+    //showing health and hit points to html
    document.getElementById('p1CharHealth').innerHTML = player1.pokeHealthPoint;
     document.getElementById('p2CharHealth').innerHTML = player2.pokeHealthPoint;
     document.getElementById('p1CharHit').innerHTML = player1.pokeHitPoint;
     document.getElementById('p2CharHit').innerHTML = player2.pokeHitPoint;
 
-
+    //setting loss values
     if (player1.pokeHealthPoint <= 0) {
       $('#legend1').empty();
       $('#p1Select').empty();
@@ -48,12 +49,12 @@
       $("#1").removeClass("clear");
       $("#2").removeClass("clear");
       $("#3").removeClass("clear");
-       if (player2Char ===0 && player2.pokeBattlePoint === null){
-        alert("Player 2 WON!!!!!!");
-    }
+    //    //if (player2Char ===0 && player2.pokeBattlePoint === null){
+    //     alert("Player 2 WON!!!!!!");
+    // }
 
     }
-
+    //setting win values
     if (player2.pokeHealthPoint <= 0) {
       $('#legend2').empty();
       $('#p2Select').empty();
@@ -62,22 +63,30 @@
       $("#4").removeClass("clear");
       $("#5").removeClass("clear");
       $("#6").removeClass("clear");
-       if (player1Char ===0 && player1.pokeBattlePoint === null){
-        alert("Player 1 WON!!!!!!");
-    }
+    //    if (player1Char ===0 && player1.pokeBattlePoint === null){
+    //     alert("Player 1 WON!!!!!!");
+    // }
 
     }
-
+    //setting reset values
     if (player1Char === 0 || player2Char === 0){
+       $("#resetButton").empty();
       $("#resetButton").append("<p><button type='button' class='btn btn-default btn-lg'>Play Again?</button></p>");
        $("#resetButton").click(function() {
         location.reload();
         });
     }
    
+   if (player1Char ===0 && player1.pokeBattlePoints === null){
+        alert("Player 2 WON!!!!!");
+    }
+
+   if (player2Char ===0 && player2.pokeBattlePoints === null){
+        alert("Player 1 WON!!!!!!");
+    }
 
  });
-
+ //click for each player on bench
   $(document).ready(function(){
     //player side
       $("#1").click(function(){
